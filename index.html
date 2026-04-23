@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#0a0f0a">
+
+<!-- iPad / iOS: add-to-home-screen standalone support -->
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="kepp.terminal">
+
+<title>kepp.terminal // portfolio</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=VT323&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="scanlines" aria-hidden="true"></div>
+  <div class="crt-flicker" aria-hidden="true"></div>
+  <div class="crt-vignette" aria-hidden="true"></div>
+
+  <div class="container">
+    <header class="term-header">
+      <pre class="ascii-logo" aria-label="KEPP">
+ ██╗  ██╗███████╗██████╗ ██████╗
+ ██║ ██╔╝██╔════╝██╔══██╗██╔══██╗
+ █████╔╝ █████╗  ██████╔╝██████╔╝
+ ██╔═██╗ ██╔══╝  ██╔═══╝ ██╔═══╝
+ ██║  ██╗███████╗██║     ██║
+ ╚═╝  ╚═╝╚══════╝╚═╝     ╚═╝     </pre>
+      <div class="term-tagline">
+        <span class="prompt">kepp@terminal</span>:<span class="cwd">~/portfolio</span>$
+        <span class="subtitle">embedded systems // junior engineer portfolio</span><span class="caret">_</span>
+      </div>
+      <pre id="boot-log" class="boot-log" aria-live="polite"></pre>
+    </header>
+
+    <nav class="tab-nav" role="tablist" aria-label="sections">
+      <a href="#portfolio" class="tab" data-tab="portfolio" role="tab">[PORTFOLIO]</a>
+      <a href="#timer"     class="tab" data-tab="timer"     role="tab">[TIMER]</a>
+      <span class="tab-spacer"></span>
+      <span class="clock" id="system-clock" aria-hidden="true">--:--:--</span>
+    </nav>
+
+    <main>
+      <!-- =================== PORTFOLIO TAB =================== -->
+      <section id="tab-portfolio" class="tab-content" role="tabpanel">
+
+        <section class="core about-block">
+          <h2>// ABOUT</h2>
+          <div class="about-grid">
+            <div class="about-row"><span class="k">role    </span><span class="v" id="about-role">—</span></div>
+            <div class="about-row"><span class="k">location</span><span class="v" id="about-location">—</span></div>
+            <div class="about-row"><span class="k">summary </span><span class="v" id="about-summary">—</span></div>
+          </div>
+        </section>
+
+        <section class="core">
+          <h2>// SKILLS</h2>
+          <div id="skills-list" class="skills-list"></div>
+        </section>
+
+        <section class="core">
+          <h2>[ CORE 01 ] // 작업물</h2>
+          <div id="projects-list" class="item-list"></div>
+        </section>
+
+        <section class="core">
+          <h2>[ CORE 02 ] // 자격증</h2>
+          <div id="certs-list" class="item-list"></div>
+        </section>
+
+        <section class="core">
+          <h2>[ CORE 03 ] // 학습 상황</h2>
+          <div id="learning-list" class="item-list"></div>
+        </section>
+
+        <section class="core">
+          <h2>// CONTACT</h2>
+          <div class="about-grid">
+            <div class="about-row"><span class="k">email   </span><span class="v" id="contact-email">—</span></div>
+            <div class="about-row"><span class="k">github  </span><span class="v" id="contact-github">—</span></div>
+            <div class="about-row"><span class="k">site    </span><span class="v" id="contact-site">—</span></div>
+            <div class="about-row"><span class="k">blog    </span><span class="v" id="contact-blog">—</span></div>
+            <div class="about-row"><span class="k">linkedin</span><span class="v" id="contact-linkedin">—</span></div>
+            <div class="about-row"><span class="k">x       </span><span class="v" id="contact-x">—</span></div>
+            <div class="about-row"><span class="k">resume  </span><span class="v" id="contact-resume">—</span></div>
+          </div>
+        </section>
+      </section>
+
+      <!-- =================== TIMER TAB =================== -->
+      <section id="tab-timer" class="tab-content hidden" role="tabpanel">
+        <div class="timer-grid">
+
+          <!-- LEFT: current session + stats -->
+          <div class="timer-left">
+            <section class="core current-session">
+              <h2>// CURRENT SESSION</h2>
+              <div id="timer-display" class="timer-display">00:00:00</div>
+              <div id="timer-status" class="timer-status">[ idle ] — not tracking</div>
+
+              <div class="input-row">
+                <label>project</label>
+                <input type="text" id="project-input" list="project-options" placeholder="e.g. STM32 HAL 공부" autocomplete="off">
+                <datalist id="project-options"></datalist>
+              </div>
+              <div class="input-row">
+                <label>memo</label>
+                <input type="text" id="memo-input" placeholder="한 줄 메모 (optional)" autocomplete="off">
+              </div>
+
+              <div class="btn-row">
+                <button id="btn-start" class="primary">[ START ]</button>
+                <button id="btn-stop"  class="danger"  disabled>[ STOP ]</button>
+              </div>
+            </section>
+
+            <section class="core">
+              <h2>// WEEKLY STATS  (Mon–Sun)</h2>
+              <div id="weekly-stats" class="bar-chart"></div>
+              <div class="weekly-total" id="weekly-total">total: 0h 0m</div>
+            </section>
+          </div>
+
+          <!-- RIGHT: session list + exports -->
+          <div class="timer-right">
+            <section class="core">
+              <div class="right-head">
+                <h2 style="margin:0">// SESSIONS</h2>
+                <div class="view-toggle" role="tablist" aria-label="session view">
+                  <button class="vt-btn active" data-view="today">[today]</button>
+                  <button class="vt-btn"        data-view="week">[this week]</button>
+                </div>
+              </div>
+
+              <div class="export-bar">
+                <button id="btn-export-ics" class="primary">[ .ics 내보내기 ]</button>
+                <button id="btn-export-csv">[ .csv 내보내기 ]</button>
+                <label class="toggle-inline">
+                  <input type="checkbox" id="include-exported">
+                  <span>이미 내보낸 세션 포함</span>
+                </label>
+              </div>
+
+              <div id="session-list" class="session-list"></div>
+              <div id="session-empty" class="session-empty hidden">-- no sessions in this range --</div>
+            </section>
+          </div>
+
+        </div>
+      </section>
+    </main>
+
+    <footer class="term-footer">
+      <span>// kepp.terminal © 2026 — retro-crt build</span>
+      <span class="footer-sep">·</span>
+      <span>press <code>tab</code> or click section headers</span>
+      <span class="footer-sep">·</span>
+      <span><a href="https://github.com/keplerisgone" target="_blank" rel="noopener">github</a></span>
+    </footer>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,99 @@
+{
+  "header": {
+    "handle": "kepp",
+    "title": "KEPP.TERMINAL",
+    "subtitle": "embedded systems // junior engineer portfolio",
+    "boot": [
+      "[boot] kepp.terminal v1.2.0",
+      "[ok]  mounting /profile ................ done",
+      "[ok]  mounting /skills ................. done",
+      "[ok]  mounting /projects ............... done",
+      "[ok]  mounting /certs .................. done",
+      "[ok]  mounting /learning ............... done",
+      "[ok]  timer.module ..................... ready",
+      "[rdy] press [PORTFOLIO] or [TIMER] ->"
+    ]
+  },
+
+  "about": {
+    "role":     "Embedded Systems Engineer (Junior)",
+    "location": "연세대학교 전기전자공학부",
+    "summary":  "펌웨어 개발과 임베디드 소프트웨어에 관심이 있습니다. 데이터시트를 꼼꼼히 읽는 편이고, 새로운 것을 배우는 데에 열려 있습니다."
+  },
+
+  "skills": [
+    { "group": "Languages", "name": "C / C++",    "level": 60 },
+    { "group": "Platform",  "name": "Arduino",    "level": 65 },
+    { "group": "Platform",  "name": "STM32",      "level": 20 },
+    { "group": "OS",        "name": "Linux",      "level": 60 },
+    { "group": "OS",        "name": "macOS",      "level": 75 },
+    { "group": "Tools",     "name": "Git",        "level": 65 },
+    { "group": "Tools",     "name": "PlatformIO", "level": 55 },
+    { "group": "Tools",     "name": "Fusion 360", "level": 45 },
+    { "group": "Tools",     "name": "nvim",       "level": 60 }
+  ],
+
+  "contact": {
+    "email":    "keplerisgone@gmail.com",
+    "github":   "github.com/keplerisgone",
+    "site":     "keplerisgone.github.io",
+    "blog":     "",
+    "linkedin": "",
+    "x":        "",
+    "resume":   ""
+  },
+
+  "projects": [
+    {
+      "id": "robot-arm-control",
+      "title": "유격 없는 기어박스 및 3-DOF 로봇팔 제어",
+      "period": "2026.01 - 2026.06",
+      "tags": ["C++", "Arduino Uno", "PlatformIO", "PID"],
+      "status": "in-progress",
+      "description": "백래시(backlash)를 최소화한 커스텀 기어박스를 직접 설계·제작하고, 이를 사용해 3자유도 로봇팔의 각 관절을 제어. Arduino Uno 기반 펌웨어에서 PID 제어 루프로 각도 추종을 구현.",
+      "github": "github.com/keplerisgone/MotorControl",
+      "demo": ""
+    },
+    {
+      "id": "zmk-config",
+      "title": "커스텀 분할 키보드 ZMK 펌웨어 (eyelash_sofle)",
+      "period": "2026.03 - 진행 중",
+      "tags": ["ZMK", "Zephyr RTOS", "nRF52", "CMake", "BLE HID", "GitHub Actions"],
+      "status": "in-progress",
+      "description": "Zephyr RTOS 기반 ZMK 펌웨어를 커스텀 분할 키보드(eyelash_sofle)용으로 빌드·설정. 키맵·레이어·비헤이비어를 직접 작성하고, GitHub Actions 워크플로로 펌웨어를 자동 빌드.",
+      "github": "github.com/keplerisgone/zmk-config",
+      "demo": ""
+    },
+    {
+      "id": "qn",
+      "title": "qn — CLI 마크다운 노트 관리 툴",
+      "period": "2026.04",
+      "tags": ["Bash", "Shell Script", "CLI"],
+      "status": "done",
+      "description": "터미널에서 빠르게 노트를 생성·검색·편집할 수 있는 Bash 기반 CLI 유틸리티. 제목/키워드 검색, 저장 경로 커스터마이즈, 설정 파일 자동 생성 지원.",
+      "github": "github.com/keplerisgone/qn",
+      "demo": ""
+    }
+  ],
+
+  "certifications": [
+    { "name": "리눅스마스터 2급",   "issuer": "한국정보통신진흥협회 (KAIT)", "status": "done",        "date":   "2025.03.28", "note": "" },
+    { "name": "정보처리기사",       "issuer": "한국산업인력공단",             "status": "in-progress", "target": "2026.05 필기 예정", "note": "" },
+    { "name": "리눅스마스터 1급",   "issuer": "한국정보통신진흥협회 (KAIT)", "status": "planned",     "target": "미정", "note": "2급 취득 후 연계 응시 계획" },
+    { "name": "SQLD (SQL 개발자)",  "issuer": "한국데이터산업진흥원 (KDATA)", "status": "planned",     "target": "미정", "note": "" },
+    { "name": "TOEIC Speaking",     "issuer": "YBM / ETS",                    "status": "planned",     "target": "미정", "note": "" },
+    { "name": "컴퓨터활용능력 2급", "issuer": "대한상공회의소",                "status": "planned",     "target": "미정", "note": "" }
+  ],
+
+  "learning": [
+    { "topic": "알고리즘 문제 풀이",  "category": "C++",        "status": "ongoing", "note": "백준 골드 5 · 꾸준히 풀이 중 · github.com/keplerisgone/CodingTest" },
+    { "topic": "STM32 HAL",           "category": "MCU",        "status": "planned", "note": "ARM Cortex-M 기반 MCU 펌웨어 실습 목표" },
+    { "topic": "FreeRTOS 내부 동작", "category": "RTOS",       "status": "planned", "note": "태스크 스케줄러·세마포어·큐 동작 원리 학습 예정" },
+    { "topic": "Linux Device Driver", "category": "Kernel",     "status": "planned", "note": "캐릭터/블록 디바이스 드라이버 학습 예정" },
+    { "topic": "임베디드 C",          "category": "Language",   "status": "planned", "note": "메모리 모델·최적화·저수준 I/O 심화 학습 예정" }
+  ],
+
+  "timer": {
+    "projectTags": []
+  }
+}

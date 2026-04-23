@@ -1,0 +1,31 @@
+# ---------- OS ----------
+.DS_Store
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+
+# ---------- Editors ----------
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.sublime-project
+.sublime-workspace
+
+# ---------- Node / build (if you later add tooling) ----------
+node_modules/
+dist/
+build/
+.cache/
+
+# ---------- Env / secrets ----------
+.env
+.env.local
+*.pem
+
+# ---------- Logs ----------
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
