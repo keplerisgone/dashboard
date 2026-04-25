@@ -218,34 +218,40 @@
     setLinkOrPlaceholder('#contact-resume',   c.resume,   ensureHttp);
   }
 
-  // Skills — supports grouped (items have `group`) and flat (no `group`)
+  // Skills — simple chip list grouped by category.
+  // Accepts either:
+  //   { "Languages": ["C", "C++"], "Tools": ["Git", ...] }   ← preferred
+  //   [ { group, name }, ... ]                                ← legacy form
   function renderSkills(skills){
     const sk = $('#skills-list');
     if(!sk) return;
     sk.innerHTML = '';
 
-    // bucket by group (fallback group: "Skills")
+    // normalize to: Map<group, string[]>
     const groups = new Map();
-    skills.forEach(s => {
-      const g = s.group || 'Skills';
-      if(!groups.has(g)) groups.set(g, []);
-      groups.get(g).push(s);
-    });
+    if(Array.isArray(skills)){
+      skills.forEach(s => {
+        const g = (s && s.group) || 'Skills';
+        if(!groups.has(g)) groups.set(g, []);
+        groups.get(g).push(s.name || '');
+      });
+    } else if(skills && typeof skills === 'object'){
+      Object.entries(skills).forEach(([g, items]) => {
+        groups.set(g, Array.isArray(items) ? items.slice() : []);
+      });
+    }
 
     groups.forEach((items, groupName) => {
       const wrap = document.createElement('div');
       wrap.className = 'skill-group';
-      wrap.innerHTML = `<div class="skill-group-title">${escapeHTML(groupName)}</div>`;
-      items.forEach(s => {
-        const lvl = Number(s.level) || 0;
-        const row = document.createElement('div');
-        row.className = 's-row skill-row';
-        row.innerHTML = `
-          <span class="s-name">${escapeHTML(s.name)}</span>
-          <span class="s-bar">${asciiBar(lvl, BAR_W)}</span>
-          <span class="s-val">${lvl}%</span>`;
-        wrap.appendChild(row);
-      });
+      const chipsHtml = items
+        .filter(Boolean)
+        .map(name => `<span class="chip">${escapeHTML(name)}</span>`)
+        .join('');
+      wrap.innerHTML = `
+        <div class="skill-group-title">${escapeHTML(groupName)}</div>
+        <div class="skill-chips">${chipsHtml}</div>
+      `;
       sk.appendChild(wrap);
     });
   }

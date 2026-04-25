@@ -93,12 +93,19 @@ python3 -m http.server 8000
 }
 ```
 
-### `skills` — 기술 스택 (그룹별, ASCII 진행률 바)
+### `skills` — 기술 스택 (그룹별, 단순 나열)
 ```json
-{ "group": "Languages", "name": "C / C++", "level": 60 }
+"skills": {
+  "Languages": ["C", "C++"],
+  "Platform":  ["Arduino", "STM32"],
+  "OS":        ["Linux", "macOS"],
+  "Tools":     ["Git", "PlatformIO", "Fusion 360", "nvim"]
+}
 ```
-- `group` 으로 묶어서 표시됩니다 (`Languages`, `Platform`, `OS`, `Tools`, ...).
-- `level` 은 0~100. **전적으로 주관적 추정치**이니 본인 감각에 맞게 조정하세요.
+- 그룹명이 키, 스킬 이름들이 배열입니다.
+- 그룹은 자유롭게 추가/삭제/순서 변경 가능합니다.
+- 별도의 `level` / `%` 표시 없이 칩(chip) 형태로 단순 나열됩니다.
+- 레거시 배열 형식 (`[{ group, name, level }]`) 도 호환됩니다 (`level` 은 무시됨).
 
 ### `projects` — **[CORE 01] 작업물**
 ```json

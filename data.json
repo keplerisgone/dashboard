@@ -21,17 +21,12 @@
     "summary":  "펌웨어 개발과 임베디드 소프트웨어에 관심이 있습니다. 데이터시트를 꼼꼼히 읽는 편이고, 새로운 것을 배우는 데에 열려 있습니다."
   },
 
-  "skills": [
-    { "group": "Languages", "name": "C / C++",    "level": 60 },
-    { "group": "Platform",  "name": "Arduino",    "level": 65 },
-    { "group": "Platform",  "name": "STM32",      "level": 20 },
-    { "group": "OS",        "name": "Linux",      "level": 60 },
-    { "group": "OS",        "name": "macOS",      "level": 75 },
-    { "group": "Tools",     "name": "Git",        "level": 65 },
-    { "group": "Tools",     "name": "PlatformIO", "level": 55 },
-    { "group": "Tools",     "name": "Fusion 360", "level": 45 },
-    { "group": "Tools",     "name": "nvim",       "level": 60 }
-  ],
+  "skills": {
+    "Languages": ["C", "C++"],
+    "Platform":  ["Arduino", "STM32"],
+    "OS":        ["Linux", "macOS"],
+    "Tools":     ["Git", "PlatformIO", "Fusion 360", "nvim"]
+  },
 
   "contact": {
     "email":    "keplerisgone@gmail.com",

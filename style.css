@@ -197,32 +197,37 @@ section.core h2{
 .about-row .v{ color:var(--fg-2); word-break:break-word; }
 .about-row .v.placeholder{ color:var(--fg-ghost); font-style:italic; }
 
-/* ---------------------- Skills list (grouped) ---------------------- */
-.skills-list{ display:flex; flex-direction:column; gap:14px; }
+/* ---------------------- Skills list (grouped chips) ---------------------- */
+.skills-list{ display:flex; flex-direction:column; gap:12px; }
 .skill-group{
   display:grid;
-  grid-template-columns:1fr 1fr;
-  gap:4px 24px;
+  grid-template-columns:120px 1fr;
+  gap:6px 14px;
+  align-items:baseline;
 }
-@media (max-width: 780px){ .skill-group{ grid-template-columns:1fr; } }
+@media (max-width: 640px){
+  .skill-group{ grid-template-columns:1fr; gap:4px; }
+}
 .skill-group-title{
-  grid-column:1 / -1;
   color:var(--fg-dim);
-  font-size:.78rem;
-  letter-spacing:.08em;
-  margin-bottom:2px;
+  font-size:.82rem;
+  letter-spacing:.06em;
 }
 .skill-group-title::before{ content:"# "; color:var(--fg-dim); }
-.skill-row{
-  display:grid;
-  grid-template-columns:1fr auto auto;
-  gap:8px;
-  align-items:center;
-  padding:2px 0;
+.skill-chips{
+  display:flex;
+  flex-wrap:wrap;
+  gap:6px;
 }
-.skill-row .s-name{ color:var(--fg-2); }
-.skill-row .s-bar{ color:var(--amber); text-shadow:var(--glow-amber); font-family:var(--mono); white-space:pre; letter-spacing:0; }
-.skill-row .s-val{ color:var(--fg-dim); font-variant-numeric:tabular-nums; min-width:42px; text-align:right; }
+.chip{
+  display:inline-block;
+  padding:1px 9px;
+  border:1px solid var(--fg-dim);
+  color:var(--fg-2);
+  background:rgba(51,255,102,.04);
+  font-size:.82rem;
+  letter-spacing:.02em;
+}
 
 /* ---------------------- Generic item-list (projects/certs/learning) ---------------------- */
 .item-list{ display:flex; flex-direction:column; gap:10px; }
